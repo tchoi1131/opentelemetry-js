@@ -15,7 +15,7 @@
  */
 import { diag } from '@opentelemetry/api';
 import type * as logsAPI from '@opentelemetry/api-logs';
-import { NOOP_LOGGER, logs } from '@opentelemetry/api-logs';
+import { NOOP_LOGGER } from '@opentelemetry/api-logs';
 import { IResource, Resource } from '@opentelemetry/resources';
 import { BindOnceFuture, merge } from '@opentelemetry/core';
 
@@ -115,10 +115,6 @@ export class LoggerProvider implements logsAPI.LoggerProvider {
       this._registeredLogRecordProcessors,
       this._config.forceFlushTimeoutMillis!
     );
-  }
-
-  register() {
-    logs.setGlobalLoggerProvider(this);
   }
 
   /**
