@@ -23,7 +23,7 @@ To see documentation and sample code for the logs exporter, see the [exporter-me
 ## Logs in Web - PROTO over http
 
 ```js
-const { BasicTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+const { LoggerProvider, SimpleLogRecordProcessor } = require('@opentelemetry/sdk-logs');
 const { OTLPLogsExporter } =  require('@opentelemetry/exporter-logs-otlp-proto');
 
 const collectorOptions = {
@@ -33,11 +33,15 @@ const collectorOptions = {
   }, //an optional object containing custom headers to be sent with each request will only work with http
 };
 
-const provider = new LoggerProvider({resource: new Resource({'service.name': 'testApp'})});
-const exporter = new OTLPLogsExporter(collectorOptions);
-provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
+const logProvider = new LoggerProvider({resource: new Resource({'service.name': 'testApp'})});
+const logExporter = new OTLPLogsExporter(collectorOptions);
+logProvider.addLogRecordProcessor(new SimpleLogRecordProcessor(exporter));
 
-provider.register();
+const logger = logProvider.getLogger('test_log_instrumentation');
+
+logger.emit({
+  //log data to emit
+})
 
 ```
 

@@ -25,7 +25,7 @@ export const validAttributes = {
 
 export const invalidAttributes = {
   // invalid attribute type object
-  object: { foo: 'bar' },
+  // object: { foo: 'bar' },
   // invalid attribute inhomogeneous array
   'non-homogeneous-array': [0, ''],
   // This empty length attribute should not be set

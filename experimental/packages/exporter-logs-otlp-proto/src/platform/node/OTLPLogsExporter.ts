@@ -50,7 +50,7 @@ import {
 import { ReadableLogRecord, LogRecordExporter } from '@opentelemetry/sdk-logs';
 
 const DEFAULT_COLLECTOR_RESOURCE_PATH = 'v1/logs';
-const DEFAULT_COLLECTOR_URL = `http://localhost:4317/${DEFAULT_COLLECTOR_RESOURCE_PATH}`;
+const DEFAULT_COLLECTOR_URL = `http://localhost:4318/${DEFAULT_COLLECTOR_RESOURCE_PATH}`;
 
 /**
  * Collector Trace Exporter for Node
